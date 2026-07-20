@@ -1,0 +1,28 @@
+generated: '2026-07-20'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.tmbank.com.au
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 26 06:18:34 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: ob.tmbl.com.au
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 26 00:11:59 2026 GMT
+  hsts: null
+domains:
+- domain: tmbank.com.au
+  dnssec: true
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: tmbl.com.au
+  dnssec: true
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

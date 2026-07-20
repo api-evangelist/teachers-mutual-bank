@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: searched
+source: live /.well-known/ probes 2026-07-20
+note: >-
+  No /.well-known/ discovery documents are served on the bank website or the CDR host.
+  CDR OpenID discovery lives on the accredited data-recipient authorization host, not on
+  the public PRD host. Absence recorded for auditability; no document returned 200.
+hosts:
+- host: https://ob.tmbl.com.au
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+- host: https://www.tmbank.com.au
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

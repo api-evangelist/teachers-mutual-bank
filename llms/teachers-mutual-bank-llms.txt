@@ -1,0 +1,36 @@
+# Teachers Mutual Bank
+
+> Teachers Mutual Bank is an Australian customer-owned mutual bank and a brand of Teachers Mutual Bank Limited (TMBL), an APRA-regulated authorised deposit-taking institution. Under Australia's Consumer Data Right (CDR / Open Banking) it exposes a public, unauthenticated Product Reference Data (PRD) API conforming to the DSB Consumer Data Standards. Consumer (account and transaction) data sharing is available to accredited data recipients via the OAuth2/OIDC FAPI channel.
+
+## APIs
+
+- [CDR Product Reference Data API](https://www.tmbank.com.au/open-banking): Public unauthenticated banking product catalogue (GET /banking/products, GET /banking/products/{productId}). Live base URL https://ob.tmbl.com.au/tmbank/cds-au/v1, x-v header 4/5.
+
+## Specs
+
+- [OpenAPI (CDS Banking, verbatim)](openapi/teachers-mutual-bank-cds-banking-products-openapi.yml)
+- [OpenAPI Overlay (AE enhancements)](overlays/teachers-mutual-bank-cds-banking-products-overlay.yaml)
+- [Authentication profile](authentication/teachers-mutual-bank-authentication.yml)
+- [Conventions](conventions/teachers-mutual-bank-conventions.yml)
+- [Error catalogue](errors/teachers-mutual-bank-problem-types.yml)
+- [Rate limits](rate-limits/teachers-mutual-bank-rate-limits.yml)
+- [Lifecycle / versioning](lifecycle/teachers-mutual-bank-lifecycle.yml)
+- [Conformance](conformance/teachers-mutual-bank-conformance.yml)
+- [Data model](data-model/teachers-mutual-bank-data-model.yml)
+- [MCP candidate tools](mcp/teachers-mutual-bank-mcp.yml)
+- [Agent skill: product catalogue](skills/teachers-mutual-bank-product-catalogue.md)
+
+## Docs
+
+- [Open Banking / CDR page](https://www.tmbank.com.au/open-banking)
+- [DSB Consumer Data Standards (Banking APIs)](https://consumerdatastandardsaustralia.github.io/standards/#banking-apis)
+- [Privacy](https://www.tmbank.com.au/privacy)
+- [Security](https://www.tmbank.com.au/security)
+- [Contact / Support](https://www.tmbank.com.au/contact)
+
+## Notes
+
+- Product Reference Data requires NO authentication or CDR accreditation.
+- Every request must send the `x-v` header (supported versions 4 and 5); older versions return HTTP 406.
+- Errors use the CDS ResponseErrorListV2 envelope (application/json), not RFC 9457.
+- Rate-limit and gateway quota are signalled via x-rate-limit-* and x-quota-* headers.

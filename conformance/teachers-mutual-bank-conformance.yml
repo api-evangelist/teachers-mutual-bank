@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: derived
+source: openapi + review.yml + Consumer Data Standards; confirmed live 2026-07-20
+standards:
+- id: cdr-consumer-data-standards
+  conforms: true
+  evidence: Serves the DSB Consumer Data Standards CDR Banking Product Reference Data API live (HTTP 200, x-v 4) at ob.tmbl.com.au/tmbank/cds-au/v1.
+- id: cds-banking-1.36.0
+  conforms: true
+  evidence: Harvested contract is the shared DSB CDS Banking standard 1.36.0 (OpenAPI 3.0.3) captured verbatim.
+- id: fapi-1.0
+  conforms: true
+  evidence: Consumer (authenticated) data-sharing channel uses the OAuth2/OIDC FAPI 1.0 security profile per CDR (documented; not exercised on the public PRD surface).
+- id: oauth2
+  conforms: true
+  evidence: CDR consumer channel authorizes accredited data recipients via OAuth2 authorization code flow (documented).
+- id: oidc
+  conforms: true
+  evidence: CDR consumer channel uses OpenID Connect for holder/recipient trust (documented).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use the CDS ResponseErrorListV2 envelope (application/json), not RFC 9457 application/problem+json.
+- id: pagination
+  conforms: true
+  evidence: page/page-size query params with meta.totalRecords/totalPages and RFC-style links object.
+- id: idempotency
+  conforms: false
+  evidence: Public PRD surface is GET-only; no idempotency-key contract.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

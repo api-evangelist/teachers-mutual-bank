@@ -1,0 +1,26 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Teachers Mutual Bank CDR PRD
+  version: 1.0.0
+extends: openapi/teachers-mutual-bank-cds-banking-products-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: teachers-mutual-bank
+    x-apievangelist-note: >-
+      Shared DSB Consumer Data Standards CDS Banking contract captured verbatim. Only
+      GET /banking/products and GET /banking/products/{productId} are the public
+      unauthenticated Product Reference Data surface Teachers Mutual Bank actually serves.
+- target: $.servers
+  update:
+    x-apievangelist-live-server: https://ob.tmbl.com.au/tmbank/cds-au/v1
+    x-apievangelist-note: The spec's servers[] carries the DSB example host mtls.dh.example.com; the real live base URL is ob.tmbl.com.au/tmbank/cds-au/v1 (confirmed HTTP 200, x-v 4).
+- target: $.paths['/banking/products'].get
+  update:
+    x-apievangelist-public: true
+    x-apievangelist-verified: '2026-07-20'
+    x-apievangelist-note: Confirmed live, 30 products, x-v 4/5 supported.
+- target: $.paths['/banking/products/{productId}'].get
+  update:
+    x-apievangelist-public: true
+    x-apievangelist-verified: '2026-07-20'

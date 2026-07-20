@@ -1,0 +1,33 @@
+generated: '2026-07-20'
+method: searched
+source: https://www.tmbank.com.au/open-banking + review.yml + Consumer Data Standards CDR security profile
+summary:
+  types: [none, oauth2, openIdConnect]
+  api_key_in: []
+  oauth2_flows: [authorizationCode]
+  note: >-
+    Two distinct channels. The public Product Reference Data (PRD) surface requires NO
+    authentication. The consumer data-sharing channel (accounts, balances, transactions,
+    direct debits, payees) is available only to CDR-accredited data recipients and uses
+    the OAuth2 / OpenID Connect FAPI 1.0 security profile mediated by the CDR Register.
+schemes:
+- name: public-prd
+  type: none
+  applies_to:
+  - openapi/teachers-mutual-bank-cds-banking-products-openapi.yml#listBankingProducts
+  - openapi/teachers-mutual-bank-cds-banking-products-openapi.yml#getBankingProductDetail
+  note: No authentication, no accreditation, no API key. Confirmed live HTTP 200.
+- name: cdr-consumer-channel
+  type: oauth2
+  scheme: FAPI 1.0
+  flow: authorizationCode
+  identity: openIdConnect
+  note: >-
+    Accredited Data Recipient (ADR) access only. Client registration and trust are
+    established via the CDR Register; tokens carry CDR banking scopes
+    (openid, bank:accounts.basic:read, bank:transactions:read, etc.). Not self-serve;
+    no public credentials or sandbox are offered by the bank.
+docs: https://www.tmbank.com.au/open-banking
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,51 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+generated: '2026-07-20'
+method: probed
+provider: Teachers Mutual Bank
+providerId: teachers-mutual-bank
+source: live response headers from https://ob.tmbl.com.au/tmbank/cds-au/v1/banking/products (x-v 4)
+tags:
+- CDR
+- Open Banking
+- Rate Limiting
+- Product Reference Data
+description: >-
+  The public Product Reference Data endpoints on ob.tmbl.com.au return CDR rate-limit
+  and Gravitee gateway quota headers on every response. Values below were observed live
+  on 2026-07-20 against GET /banking/products. The unauthenticated PRD tier is governed
+  by the Consumer Data Standards Non-Functional Requirements (NFRs); the gateway also
+  enforces a rolling request quota.
+sources:
+- https://ob.tmbl.com.au/tmbank/cds-au/v1/banking/products
+- https://consumerdatastandardsaustralia.github.io/standards/#non-functional-requirements
+responseCodes:
+  throttled: 429
+signalHeaders:
+- x-rate-limit-limit
+- x-rate-limit-remaining
+- x-rate-limit-reset
+- x-quota-limit
+- x-quota-remaining
+- x-quota-reset
+limits:
+- name: PRD request rate
+  scope: unauthenticated-endpoint
+  metric: requests
+  limit: 300
+  header: x-rate-limit-limit
+  notes: Observed x-rate-limit-limit 300 with x-rate-limit-remaining and x-rate-limit-reset returned per response. Consumer Data Standards NFR traffic threshold for unauthenticated PRD.
+- name: Gateway quota
+  scope: gateway
+  metric: requests
+  limit: 100000
+  header: x-quota-limit
+  notes: Gravitee gateway rolling quota; observed x-quota-limit 100000 with x-quota-remaining and an x-quota-reset epoch-ms timestamp.
+policies:
+- name: Version negotiation
+  description: Requests must send the x-v header; unsupported versions return 406, not 429.
+- name: Backoff Strategy
+  description: On 429, honor the reset timestamp headers before retrying.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

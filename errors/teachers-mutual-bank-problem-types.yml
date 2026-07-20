@@ -1,0 +1,48 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/teachers-mutual-bank-cds-banking-products-openapi.yml
+format: cds-response-error-list
+envelope:
+  schema: ResponseErrorListV2
+  shape: '{ "errors": [ { "code": "<urn>", "title": "...", "detail": "...", "meta": {} } ] }'
+  content_type: application/json
+  note: >-
+    The Consumer Data Standards use a CDS-specific error envelope (ResponseErrorListV2 /
+    ErrorV2), NOT RFC 9457 application/problem+json. Error codes are URNs from the CDS
+    error registry (urn:au-cds:error:...). This catalogue covers the two public
+    unauthenticated Product Reference Data operations.
+problems:
+- status: 400
+  title: Bad Request
+  detail: Invalid field, missing field, or invalid page-size / version parameters.
+  cds_codes:
+  - urn:au-cds:error:cds-all:Field/Invalid
+  - urn:au-cds:error:cds-all:Field/InvalidPageSize
+  source_operations:
+  - openapi/teachers-mutual-bank-cds-banking-products-openapi.yml#listBankingProducts
+  - openapi/teachers-mutual-bank-cds-banking-products-openapi.yml#getBankingProductDetail
+- status: 404
+  title: Not Found
+  detail: The requested productId was not found.
+  cds_codes:
+  - urn:au-cds:error:cds-all:Resource/NotFound
+  source_operations:
+  - openapi/teachers-mutual-bank-cds-banking-products-openapi.yml#getBankingProductDetail
+- status: 406
+  title: Unsupported Version
+  detail: Requested x-v/x-min-v version is not supported. Server advertises versions 4 and 5; x-v 1-3 return 406 (Available 4 5).
+  cds_codes:
+  - urn:au-cds:error:cds-all:Header/UnsupportedVersion
+  source_operations:
+  - openapi/teachers-mutual-bank-cds-banking-products-openapi.yml#listBankingProducts
+  - openapi/teachers-mutual-bank-cds-banking-products-openapi.yml#getBankingProductDetail
+- status: 422
+  title: Unprocessable Entity
+  detail: A field is syntactically valid but semantically invalid for the request.
+  cds_codes:
+  - urn:au-cds:error:cds-all:Field/Invalid
+  source_operations:
+  - openapi/teachers-mutual-bank-cds-banking-products-openapi.yml#listBankingProducts
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

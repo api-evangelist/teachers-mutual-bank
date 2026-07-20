@@ -1,0 +1,26 @@
+generated: '2026-07-20'
+method: searched
+source: Consumer Data Standards + live probes of ob.tmbl.com.au
+versioning:
+  scheme: header
+  header: x-v
+  current: 4
+  available: [4, 5]
+  standard_version: '1.36.0'
+  docs: https://consumerdatastandardsaustralia.github.io/standards/#versioning
+  note: >-
+    The bank publishes no proprietary API version. Endpoints are versioned per the DSB
+    Consumer Data Standards via the x-v request/response header. The harvested contract
+    tracks CDS Banking standard 1.36.0; the live server advertises endpoint versions 4 and 5.
+deprecation:
+  policy_url: https://consumerdatastandardsaustralia.github.io/standards/#versioning
+  sunset_header: false
+  note: Endpoint version retirement is governed centrally by the DSB Consumer Data Standards maintenance iteration cycle, not by the bank. No RFC 8594 Sunset header observed.
+sla:
+  url: https://consumerdatastandardsaustralia.github.io/standards/#non-functional-requirements
+  note: Availability and performance targets are set by the CDS Non-Functional Requirements for data holders, not a bank-published SLA.
+status_page: null
+deprecated_operations: []
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

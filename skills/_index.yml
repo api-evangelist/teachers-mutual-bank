@@ -1,0 +1,7 @@
+generated: '2026-07-20'
+method: generated
+skills:
+- file: teachers-mutual-bank-product-catalogue.md
+  name: Retrieve Teachers Mutual Bank product catalogue
+  api: openapi/teachers-mutual-bank-cds-banking-products-openapi.yml
+  operations: [listBankingProducts, getBankingProductDetail]

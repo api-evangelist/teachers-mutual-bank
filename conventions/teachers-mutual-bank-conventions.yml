@@ -1,0 +1,42 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/teachers-mutual-bank-cds-banking-products-openapi.yml + live probes + Consumer Data Standards
+summary: >-
+  Cross-cutting request/response semantics for the Teachers Mutual Bank public CDR
+  Product Reference Data surface. These conventions are defined by the DSB Consumer
+  Data Standards and were confirmed against live responses on 2026-07-20.
+authentication:
+  public_prd: none
+  note: Product Reference Data endpoints require no authentication. Consumer data sharing uses OAuth2/OIDC FAPI 1.0 for accredited data recipients only (see authentication/).
+versioning:
+  style: header
+  request_headers: [x-v, x-min-v]
+  response_header: x-v
+  supported: [4, 5]
+  note: Each endpoint is independently versioned. Requests MUST send x-v; unsupported versions return HTTP 406. Live server returns x-v 4.
+pagination:
+  style: page-number
+  request_params: [page, page-size]
+  response_fields: [meta.totalRecords, meta.totalPages, links.first, links.prev, links.next, links.last, links.self]
+  default_page_size: 25
+  max_page_size: 1000
+request_tracing:
+  header: x-fapi-interaction-id
+  note: RFC-style interaction id echoed by the gateway for request correlation.
+rate_limit_signaling:
+  headers: [x-rate-limit-limit, x-rate-limit-remaining, x-rate-limit-reset, x-quota-limit, x-quota-remaining, x-quota-reset]
+  see: rate-limits/teachers-mutual-bank-rate-limits.yml
+error_envelope:
+  schema: ResponseErrorListV2
+  content_type: application/json
+  format: cds-response-error-list
+  see: errors/teachers-mutual-bank-problem-types.yml
+idempotency:
+  supported: false
+  note: The public PRD surface is read-only (GET only); no idempotency-key contract applies.
+transport_security:
+  hsts: true
+  tls: TLSv1.3
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

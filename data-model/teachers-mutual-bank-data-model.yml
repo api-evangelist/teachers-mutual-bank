@@ -1,0 +1,59 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/teachers-mutual-bank-cds-banking-products-openapi.yml (BankingProduct* schemas)
+note: >-
+  Entity-relationship graph for the public Product Reference Data domain, derived from
+  the CDS Banking schemas. Only the product-catalogue entities are in the public
+  unauthenticated surface; consumer entities (accounts, transactions) require CDR
+  accreditation and are out of scope here.
+entities:
+- name: BankingProduct
+  description: A summary banking product returned by the product list.
+  key: productId
+- name: BankingProductDetail
+  description: Full detail for a single product (extends BankingProduct).
+  key: productId
+- name: BankingProductFeature
+  description: A feature of a product (e.g. card access, digital wallet).
+- name: BankingProductConstraint
+  description: A constraint on a product (e.g. min balance, max limit).
+- name: BankingProductEligibility
+  description: An eligibility criterion for a product.
+- name: BankingProductFee
+  description: A fee associated with a product.
+- name: BankingProductDepositRate
+  description: A deposit interest rate for a product.
+- name: BankingProductLendingRate
+  description: A lending interest rate for a product.
+relationships:
+- from: BankingProductDetail
+  to: BankingProduct
+  type: extends
+  via: productId
+- from: BankingProductDetail
+  to: BankingProductFeature
+  type: has_many
+  via: features
+- from: BankingProductDetail
+  to: BankingProductConstraint
+  type: has_many
+  via: constraints
+- from: BankingProductDetail
+  to: BankingProductEligibility
+  type: has_many
+  via: eligibility
+- from: BankingProductDetail
+  to: BankingProductFee
+  type: has_many
+  via: fees
+- from: BankingProductDetail
+  to: BankingProductDepositRate
+  type: has_many
+  via: depositRates
+- from: BankingProductDetail
+  to: BankingProductLendingRate
+  type: has_many
+  via: lendingRates
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

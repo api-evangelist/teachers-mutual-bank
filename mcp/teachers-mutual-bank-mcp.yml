@@ -1,0 +1,23 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/teachers-mutual-bank-cds-banking-products-openapi.yml
+note: >-
+  No official hosted/remote MCP server is published by Teachers Mutual Bank. This is a
+  DERIVED candidate tool list mapping the two public unauthenticated Product Reference
+  Data operations to MCP tools. All tools are read-only and require no authentication.
+server:
+  name: teachers-mutual-bank
+  transport: http
+tools:
+- name: list_banking_products
+  description: List the bank's public banking product catalogue (30 products), with paging.
+  read_only: true
+  source_operation: openapi/teachers-mutual-bank-cds-banking-products-openapi.yml#listBankingProducts
+- name: get_banking_product_detail
+  description: Retrieve full detail for a single banking product by productId.
+  read_only: true
+  source_operation: openapi/teachers-mutual-bank-cds-banking-products-openapi.yml#getBankingProductDetail
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
