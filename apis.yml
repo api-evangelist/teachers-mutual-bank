@@ -1,0 +1,73 @@
+aid: teachers-mutual-bank
+url: https://raw.githubusercontent.com/api-evangelist/teachers-mutual-bank/refs/heads/main/apis.yml
+name: Teachers Mutual Bank
+kind: company
+description: Teachers Mutual Bank is an Australian customer-owned mutual bank and a
+  brand of Teachers Mutual Bank Limited (TMBL), an authorised deposit-taking institution
+  (ADI) regulated by APRA that also operates UniBank, Firefighters Mutual Bank, Health
+  Professionals Bank and Hiver. As a member-owned bank it returns value to members
+  rather than external shareholders and serves teachers, education staff and the wider
+  community. Under Australia's Consumer Data Right (CDR / Open Banking), Teachers Mutual
+  Bank exposes a public, unauthenticated Product Reference Data (PRD) API conforming
+  to the Data Standards Body (DSB) Consumer Data Standards, letting anyone retrieve
+  its banking product catalogue. Consumer (account and transaction) data sharing is
+  available to accredited data recipients through the authenticated CDR channel using
+  the OAuth2 / OpenID Connect FAPI security profile.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Financial
+- Banks
+- Open Banking
+- CDR
+- Consumer Banking
+- Australia
+- Mutual Bank
+- Product Reference Data
+created: '2026-07-20'
+modified: '2026-07-20'
+specificationVersion: '0.19'
+apis:
+- aid: teachers-mutual-bank:teachers-mutual-bank-cdr-product-reference-data-api
+  name: Teachers Mutual Bank CDR Product Reference Data API
+  tags:
+  - CDR
+  - Open Banking
+  - Product Reference Data
+  - Banking
+  - Consumer Data Right
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.tmbank.com.au/open-banking
+  baseURL: https://ob.tmbl.com.au/tmbank/cds-au/v1
+  properties:
+  - url: https://www.tmbank.com.au/open-banking
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#banking-apis
+    type: APIReference
+  - url: openapi/teachers-mutual-bank-cds-banking-products-openapi.yml
+    type: OpenAPI
+  description: Public, unauthenticated Consumer Data Right Product Reference Data (PRD)
+    API for the Teachers Mutual Bank brand of Teachers Mutual Bank Limited. Exposes
+    GET /banking/products and GET /banking/products/{productId} under the standard
+    CDS base path, returning the bank's full banking product catalogue (30 products
+    at time of review) as defined by the DSB Consumer Data Standards. Confirmed live
+    (HTTP 200) with the x-v header set to 4 (server advertises versions 4 and 5).
+common:
+- type: Website
+  url: https://www.tmbank.com.au/
+- type: DeveloperPortal
+  url: https://www.tmbank.com.au/open-banking
+- type: Documentation
+  url: https://www.tmbank.com.au/open-banking
+- type: LinkedIn
+  url: https://www.linkedin.com/company/teachers-mutual-bank
+- type: PrivacyPolicy
+  url: https://www.tmbank.com.au/privacy
+- type: Security
+  url: https://www.tmbank.com.au/security
+- type: Support
+  url: https://www.tmbank.com.au/contact
+- type: ParentOrganization
+  url: https://www.tmbl.com.au/
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,106 @@
+aid: teachers-mutual-bank
+name: Teachers Mutual Bank
+review:
+  question: Does Teachers Mutual Bank expose a confirmed public API surface, and is
+    its only machine-readable contract the shared DSB Consumer Data Standard rather
+    than a bank-proprietary spec?
+  answer: true
+  date: '2026-07-20'
+  reviewer: API Evangelist
+findings:
+  summary: |
+    Teachers Mutual Bank (a brand of Teachers Mutual Bank Limited, TMBL) exposes
+    exactly one public, unauthenticated API surface: the Consumer Data Right (CDR)
+    Product Reference Data (PRD) API mandated for every active Australian ADI. It
+    was confirmed LIVE with HTTP 200 at
+    https://ob.tmbl.com.au/tmbank/cds-au/v1/banking/products using the required
+    x-v request header set to 4; the server advertises supported versions 4 and 5
+    (older x-v values 1-3 return HTTP 406 Unsupported Version). The response is
+    valid CDS JSON with a data.products array and meta.totalRecords of 30 products.
+    The gateway is Gravitee behind Cloudflare and returns CDR quota / rate-limit
+    headers (x-quota-remaining, x-rate-limit-limit: 300).
+
+    There is NO dedicated developer portal. developer.tmbank.com.au,
+    api.tmbank.com.au and developer.tmbl.com.au do not resolve. The public
+    "developer info" is a section on the bank's Open Banking page at
+    https://www.tmbank.com.au/open-banking. TMBL runs the same ob.tmbl.com.au
+    host with per-brand path prefixes for its other ADI brands (unibank, fmbank
+    for Firefighters Mutual Bank, hpbank for Health Professionals Bank, ambank
+    for Australian Mutual Bank).
+
+    Spec provenance: no bank-proprietary OpenAPI is published. The harvested
+    contract at openapi/teachers-mutual-bank-cds-banking-products-openapi.yml is
+    the SHARED DSB Consumer Data Standards "CDR Banking API" swagger (OpenAPI
+    3.0.3, version 1.36.0, authored by the Data Standards Body, contact@dsb.gov.au)
+    captured VERBATIM from consumerdatastandardsaustralia.github.io. It defines
+    the full banking standard (16 paths); only GET /banking/products and
+    GET /banking/products/{productId} are the public unauthenticated PRD surface
+    that Teachers Mutual Bank actually serves. It is NOT a bank-specific contract.
+  authModel: |
+    Product Reference Data endpoints are public and require no authentication or
+    CDR accreditation. Consumer data sharing (accounts, balances, transactions,
+    direct debits, payees) is available only to accredited data recipients (ADRs)
+    through the authenticated CDR channel, which uses the OAuth2 / OpenID Connect
+    FAPI 1.0 security profile with the CDR Register and holder/recipient trust
+    model. No public credentials, sandbox, or self-serve API keys are offered.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://ob.tmbl.com.au/tmbank/cds-au/v1
+      documented: true
+      note: CDS-conformant public Product Reference Data API. Confirmed HTTP 200 with x-v 4.
+  endpointsConfirmedRest:
+    - GET https://ob.tmbl.com.au/tmbank/cds-au/v1/banking/products
+    - GET https://ob.tmbl.com.au/tmbank/cds-au/v1/banking/products/{productId}
+  probes:
+    - url: https://ob.tmbl.com.au/tmbank/cds-au/v1/banking/products?page-size=1
+      header: 'x-v: 4'
+      status: 200
+      note: Live. Returns CDS JSON, response x-v 4, meta.totalRecords 30.
+    - url: https://ob.tmbl.com.au/tmbank/cds-au/v1/banking/products?page-size=1
+      header: 'x-v: 3'
+      status: 406
+      note: Unsupported Version (Available 4 5).
+    - url: https://www.tmbank.com.au/
+      status: 200
+    - url: https://www.tmbank.com.au/open-banking
+      status: 200
+      note: Open Banking / CDR page with what-is / consumer-data-rights / developer-info sections.
+    - url: https://www.tmbank.com.au/privacy
+      status: 200
+    - url: https://www.tmbank.com.au/security
+      status: 200
+    - url: https://www.tmbank.com.au/contact
+      status: 200
+    - url: https://www.linkedin.com/company/teachers-mutual-bank
+      status: 200
+    - url: https://developer.tmbank.com.au/
+      status: 000
+      note: Does not resolve - no dedicated developer portal.
+cdr:
+  prdConfirmed: true
+  baseURL: https://ob.tmbl.com.au/tmbank/cds-au/v1
+  productsEndpoint: https://ob.tmbl.com.au/tmbank/cds-au/v1/banking/products
+  xVersionAccepted: 4
+  xVersionsAvailable: [4, 5]
+  totalProducts: 30
+  gateway: Gravitee behind Cloudflare
+sources:
+  - url: https://www.tmbank.com.au/open-banking
+    type: Documentation
+    note: Bank's public Open Banking / CDR page (also the developer info location).
+  - url: https://consumerdatastandardsaustralia.github.io/standards/
+    type: APIReference
+    note: DSB Consumer Data Standards - source of the shared CDS Banking swagger.
+  - url: https://consumerdatastandardsaustralia.github.io/standards/includes/swagger/cds_banking.json
+    type: OpenAPI
+    note: Verbatim source of the harvested spec (CDR Banking API 1.36.0, OpenAPI 3.0.3).
+spec:
+  path: openapi/teachers-mutual-bank-cds-banking-products-openapi.yml
+  provenance: DSB-CDS-standard
+  proprietary: false
+  openapi: 3.0.3
+  standardVersion: 1.36.0
+  note: |
+    Shared Data Standards Body CDS Banking standard captured verbatim, NOT a
+    Teachers Mutual Bank proprietary contract. Bank publishes no own OpenAPI.
