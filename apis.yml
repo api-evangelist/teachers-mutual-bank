@@ -24,7 +24,7 @@ tags:
 - Mutual Bank
 - Product Reference Data
 created: '2026-07-20'
-modified: '2026-07-20'
+modified: '2026-07-21'
 specificationVersion: '0.19'
 apis:
 - aid: teachers-mutual-bank:teachers-mutual-bank-cdr-product-reference-data-api
@@ -37,7 +37,7 @@ apis:
   - Consumer Data Right
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://www.tmbank.com.au/open-banking
-  baseURL: https://ob.tmbl.com.au/tmbank/cds-au/v1
+  baseURL: https://ob.tmbl.com.au/tmbank/cds-au/v1/banking/products
   properties:
   - url: https://www.tmbank.com.au/open-banking
     type: Documentation
@@ -50,7 +50,112 @@ apis:
     GET /banking/products and GET /banking/products/{productId} under the standard
     CDS base path, returning the bank's full banking product catalogue (30 products
     at time of review) as defined by the DSB Consumer Data Standards. Confirmed live
-    (HTTP 200) with the x-v header set to 4 (server advertises versions 4 and 5).
+    (HTTP 200) on 2026-07-21 with the x-v request header set to 4 (version 3 now
+    returns HTTP 406; the server advertises current version 4). No authentication,
+    MTLS or ADR accreditation is required for these product endpoints.
+- aid: teachers-mutual-bank:teachers-mutual-bank-cdr-accounts-balances-api
+  name: Teachers Mutual Bank CDR Accounts & Balances API
+  tags:
+  - CDR
+  - Open Banking
+  - Accounts
+  - Balances
+  - Consumer Data Right
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.tmbank.com.au/open-banking
+  baseURL: https://ob.tmbl.com.au/tmbank/cds-au/v1/banking/accounts
+  properties:
+  - url: https://www.tmbank.com.au/open-banking
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#banking-apis
+    type: APIReference
+  - url: openapi/teachers-mutual-bank-cds-banking-products-openapi.yml
+    type: OpenAPI
+  description: Consumer-authorized Consumer Data Right accounts and balances surface
+    for Teachers Mutual Bank, defined by the DSB Consumer Data Standards CDR Banking
+    API (v1.36.0). Covers Get Accounts (GET /banking/accounts), Get Account Detail
+    (GET /banking/accounts/{accountId}), Get Bulk Balances (GET /banking/accounts/balances),
+    and Get Account Balance (GET /banking/accounts/{accountId}/balance). These
+    endpoints are NOT public and access requires a consumer to authorize an accredited
+    data recipient (ADR) via the CDR OAuth2 / OpenID Connect FAPI flow over MTLS,
+    so unauthenticated calls are rejected (HTTP 404/401 at the data-holder gateway).
+- aid: teachers-mutual-bank:teachers-mutual-bank-cdr-transactions-api
+  name: Teachers Mutual Bank CDR Transactions API
+  tags:
+  - CDR
+  - Open Banking
+  - Transactions
+  - Banking
+  - Consumer Data Right
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.tmbank.com.au/open-banking
+  baseURL: https://ob.tmbl.com.au/tmbank/cds-au/v1/banking/accounts
+  properties:
+  - url: https://www.tmbank.com.au/open-banking
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#banking-apis
+    type: APIReference
+  - url: openapi/teachers-mutual-bank-cds-banking-products-openapi.yml
+    type: OpenAPI
+  description: Consumer-authorized Consumer Data Right transactions surface for
+    Teachers Mutual Bank, defined by the DSB Consumer Data Standards CDR Banking
+    API (v1.36.0). Covers Get Transactions For Account (GET /banking/accounts/{accountId}/transactions)
+    and Get Transaction Detail (GET /banking/accounts/{accountId}/transactions/{transactionId}),
+    supporting date, amount and text filtering per the standard. Access requires a
+    consumer to authorize an accredited data recipient (ADR) through the CDR OAuth2
+    / OpenID Connect FAPI security profile over MTLS; the endpoints are not publicly
+    callable without accreditation and consumer consent.
+- aid: teachers-mutual-bank:teachers-mutual-bank-cdr-direct-debits-scheduled-payments-api
+  name: Teachers Mutual Bank CDR Direct Debits & Scheduled Payments API
+  tags:
+  - CDR
+  - Open Banking
+  - Direct Debits
+  - Scheduled Payments
+  - Consumer Data Right
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.tmbank.com.au/open-banking
+  baseURL: https://ob.tmbl.com.au/tmbank/cds-au/v1/banking/accounts
+  properties:
+  - url: https://www.tmbank.com.au/open-banking
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#banking-apis
+    type: APIReference
+  - url: openapi/teachers-mutual-bank-cds-banking-products-openapi.yml
+    type: OpenAPI
+  description: Consumer-authorized Consumer Data Right direct-debits and scheduled-payments
+    surface for Teachers Mutual Bank, defined by the DSB Consumer Data Standards CDR
+    Banking API (v1.36.0). Covers Get Direct Debits For Account and Get Bulk Direct
+    Debits (GET /banking/accounts/{accountId}/direct-debits, GET /banking/accounts/direct-debits),
+    plus Get Scheduled Payments For Account and Get Bulk Scheduled Payments (GET
+    /banking/accounts/{accountId}/payments/scheduled, GET /banking/payments/scheduled).
+    Access requires a consumer to authorize an accredited data recipient (ADR) via
+    the CDR OAuth2 / OpenID Connect FAPI flow over MTLS; not publicly callable.
+- aid: teachers-mutual-bank:teachers-mutual-bank-cdr-payees-api
+  name: Teachers Mutual Bank CDR Payees API
+  tags:
+  - CDR
+  - Open Banking
+  - Payees
+  - Banking
+  - Consumer Data Right
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.tmbank.com.au/open-banking
+  baseURL: https://ob.tmbl.com.au/tmbank/cds-au/v1/banking/payees
+  properties:
+  - url: https://www.tmbank.com.au/open-banking
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#banking-apis
+    type: APIReference
+  - url: openapi/teachers-mutual-bank-cds-banking-products-openapi.yml
+    type: OpenAPI
+  description: Consumer-authorized Consumer Data Right payees surface for Teachers
+    Mutual Bank, defined by the DSB Consumer Data Standards CDR Banking API (v1.36.0).
+    Covers Get Payees (GET /banking/payees) and Get Payee Detail (GET /banking/payees/{payeeId}),
+    returning a consumer's saved payees where they have authorized sharing. Access
+    requires a consumer to authorize an accredited data recipient (ADR) through the
+    CDR OAuth2 / OpenID Connect FAPI security profile over MTLS; these endpoints are
+    not publicly callable without accreditation and explicit consumer consent.
 common:
 - type: DomainSecurity
   url: security/teachers-mutual-bank-domain-security.yml
