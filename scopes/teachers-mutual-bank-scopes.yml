@@ -1,0 +1,71 @@
+specification: API Commons OAuth Scopes
+specificationVersion: '0.1'
+generated: '2026-07-21'
+method: derived
+provider: Teachers Mutual Bank
+providerId: teachers-mutual-bank
+source: openapi/teachers-mutual-bank-cds-banking-products-openapi.yml (x-scopes) + Consumer Data Standards authorisation scopes
+docs: https://consumerdatastandardsaustralia.github.io/standards/#authorisation-scopes
+note: >-
+  The public Product Reference Data (PRD) surface is unauthenticated and carries no
+  scopes. The consumer data-sharing channel (accounts, balances, transactions, direct
+  debits, scheduled payments, payees) is authorised via the CDR OAuth2 / OpenID Connect
+  FAPI 1.0 profile. Each protected operation declares its required authorisation scope
+  through the CDR `x-scopes` OpenAPI extension in the captured contract. The five banking
+  scopes below are the standard DSB Consumer Data Standards authorisation scopes; scope
+  strings and per-operation requirements are taken verbatim from the harvested spec, and
+  descriptions follow the published Consumer Data Standards. Teachers Mutual Bank does not
+  define custom scopes beyond the shared DSB banking scope set.
+tags:
+- CDR
+- Open Banking
+- OAuth2
+- FAPI
+- Authorisation Scopes
+flow: authorizationCode
+scopes:
+- scope: bank:accounts.basic:read
+  description: >-
+    Account name, type, account holder(s), and balance. Basic account information used
+    to list a consumer's banking accounts and read account and bulk balances.
+  operations:
+  - listBankingAccounts
+  - getBankingBalance
+  - listBankingBalancesBulk
+  - listBankingBalancesSpecificAccounts
+- scope: bank:accounts.detail:read
+  description: >-
+    Detailed account information including account numbers, features, rates, fees, and
+    other account-specific detail beyond the basic profile.
+  operations:
+  - getBankingAccountDetail
+- scope: bank:transactions:read
+  description: >-
+    Transaction details for authorised accounts, including amounts, dates, descriptions,
+    and per-transaction detail.
+  operations:
+  - listBankingTransactions
+  - getBankingTransactionDetail
+- scope: bank:regular_payments:read
+  description: >-
+    Direct debits, scheduled payments, and instalment plans configured against a
+    consumer's authorised accounts.
+  operations:
+  - listDirectDebits
+  - listDirectDebitsBulk
+  - listDirectDebitsSpecificAccounts
+  - listScheduledPayments
+  - listScheduledPaymentsBulk
+  - listScheduledPaymentsSpecificAccounts
+  - listInstalmentPlans
+  - listInstalmentPlansBulk
+- scope: bank:payees:read
+  description: >-
+    Saved payees stored by the consumer, returned only where the consumer has authorised
+    sharing of their payee list.
+  operations:
+  - listBankingPayees
+  - getBankingPayeeDetail
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

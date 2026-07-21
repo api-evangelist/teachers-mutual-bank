@@ -173,6 +173,8 @@ common:
   url: https://consumerdatastandardsaustralia.github.io/standards/#versioning
 - type: Conformance
   url: conformance/teachers-mutual-bank-conformance.yml
+- type: OAuthScopes
+  url: scopes/teachers-mutual-bank-scopes.yml
 - type: DataModel
   url: data-model/teachers-mutual-bank-data-model.yml
 - type: MCPServer
