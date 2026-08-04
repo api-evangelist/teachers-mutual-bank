@@ -1,0 +1,26 @@
+{
+  "provider": "teachers-mutual-bank",
+  "sources": [
+    "teachers-mutual-bank-banking-account-balances-api-openapi.yml",
+    "teachers-mutual-bank-banking-account-direct-debits-api-openapi.yml",
+    "teachers-mutual-bank-banking-account-scheduled-payments-api-openapi.yml",
+    "teachers-mutual-bank-banking-account-transactions-api-openapi.yml",
+    "teachers-mutual-bank-banking-accounts-api-openapi.yml",
+    "teachers-mutual-bank-banking-payees-api-openapi.yml",
+    "teachers-mutual-bank-banking-products-api-openapi.yml"
+  ],
+  "outputs": [
+    "teachers-mutual-bank-banking-account-balances-api-openapi.yml",
+    "teachers-mutual-bank-banking-account-direct-debits-api-openapi.yml",
+    "teachers-mutual-bank-banking-account-scheduled-payments-api-openapi.yml",
+    "teachers-mutual-bank-banking-account-transactions-api-openapi.yml",
+    "teachers-mutual-bank-banking-accounts-api-openapi.yml",
+    "teachers-mutual-bank-banking-payees-api-openapi.yml",
+    "teachers-mutual-bank-banking-products-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
