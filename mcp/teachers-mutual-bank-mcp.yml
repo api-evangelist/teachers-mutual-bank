@@ -2,10 +2,9 @@ generated: '2026-07-20'
 method: derived
 status: candidate
 source: openapi/teachers-mutual-bank-cds-banking-products-openapi.yml
-note: >-
-  No official hosted/remote MCP server is published by Teachers Mutual Bank. This is a
-  DERIVED candidate tool list mapping the two public unauthenticated Product Reference
-  Data operations to MCP tools. All tools are read-only and require no authentication.
+note: No official hosted/remote MCP server is published by Teachers Mutual Bank. This is a DERIVED candidate
+  tool list mapping the two public unauthenticated Product Reference Data operations to MCP tools. All
+  tools are read-only and require no authentication.
 server:
   name: teachers-mutual-bank
   transport: http
@@ -21,3 +20,9 @@ tools:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+deployment:
+  mode: none
+  verified: derived
+  tools: 2
+  checked: '2026-08-12'
+  source: catalog MCP census
