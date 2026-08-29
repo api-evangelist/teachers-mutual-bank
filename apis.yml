@@ -13,6 +13,18 @@ description: Teachers Mutual Bank is an Australian customer-owned mutual bank an
   its banking product catalogue. Consumer (account and transaction) data sharing is
   available to accredited data recipients through the authenticated CDR channel using
   the OAuth2 / OpenID Connect FAPI security profile.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
