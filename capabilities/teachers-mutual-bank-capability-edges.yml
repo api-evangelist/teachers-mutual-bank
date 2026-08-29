@@ -1,0 +1,36 @@
+slug: teachers-mutual-bank
+provider: Teachers Mutual Bank
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Banking Products
+  spec_file: teachers-mutual-bank-banking-products-api-openapi.yml
+  capability_id: BC-1310.10
+  capability_id_l1: BC-1310
+  capability_name: Product Catalogue Management
+  confidence: 0.9
+  evidence: GET /banking/products listBankingProducts Get Products; schemas BankingProductV6, BankingProductFeeV2,
+    BankingProductDepositRateV2, BankingProductBundle
+  reason: Publishes the bank's product catalogue with fees, rates, features and bundles — banking product
+    catalogue/master data.
+- tag: Banking Payees
+  spec_file: teachers-mutual-bank-banking-payees-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.7
+  evidence: GET /banking/payees listBankingPayees Get Payees; schemas BankingDomesticPayeeAccount, BankingInternationalPayee,
+    BankingBillerPayee
+  reason: Saved payee registry (domestic, international, biller, digital wallet payees) under CDR banking
+    — payee records exist to support payment instruction capture and initiation. Some ambiguity as it
+    is a read-only data-sharing surface rather than actual payment initiation, hence moderate confidence.

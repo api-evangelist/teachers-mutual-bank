@@ -150,6 +150,9 @@ apis:
   - type: APIReference
     url: https://consumerdatastandardsaustralia.github.io/standards/#banking-apis
 common:
+- type: CapabilityMap
+  url: capabilities/teachers-mutual-bank-capability-edges.yml
+  name: Teachers Mutual Bank Business Capability Map
 - type: DomainSecurity
   url: security/teachers-mutual-bank-domain-security.yml
 - type: Authentication
