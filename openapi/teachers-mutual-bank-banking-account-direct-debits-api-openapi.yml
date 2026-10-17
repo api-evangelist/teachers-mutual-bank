@@ -453,40 +453,26 @@ components:
       - accountId
       - authorisedEntity
       type: object
-    ResponseBankingDirectDebitAuthorisationList:
+    BankingAuthorisedEntity:
       properties:
-        data:
-          $ref: '#/components/schemas/ResponseBankingDirectDebitAuthorisationList_data'
-        links:
-          $ref: '#/components/schemas/LinksPaginated'
-        meta:
-          $ref: '#/components/schemas/MetaPaginated'
-      required:
-      - data
-      - links
-      - meta
+        description:
+          description: Description of the authorised entity derived from previously executed direct debits.
+          type: string
+        financialInstitution:
+          description: Name of the financial institution through which the direct debit will be executed. Is required unless the payment is made via a credit card scheme.
+          type: string
+        abn:
+          description: Australian Business Number for the authorised entity.
+          type: string
+        acn:
+          description: Australian Company Number for the authorised entity.
+          type: string
+        arbn:
+          description: Australian Registered Body Number for the authorised entity.
+          type: string
       type: object
-    BankingProductCategoryV2:
-      description: The category to which a product or account belongs. See [here](#product-categories) for more details.
-      enum:
-      - BUSINESS_LOANS
-      - BUY_NOW_PAY_LATER
-      - CRED_AND_CHRG_CARDS
-      - LEASES
-      - MARGIN_LOANS
-      - OVERDRAFTS
-      - PERS_LOANS
-      - REGULATED_TRUST_ACCOUNTS
-      - RESIDENTIAL_MORTGAGES
-      - TERM_DEPOSITS
-      - TRADE_FINANCE
-      - TRANS_AND_SAVINGS_ACCOUNTS
-      - TRAVEL_CARDS
-      type: string
-    BankingAccountId:
-      description: A unique identifier for a Banking account, generated according to [CDR ID Permanence](#id-permanence) requirements.
-      type: string
-      x-cds-type: ASCIIString
+      x-conditional:
+      - financialInstitution
     RequestAccountIdListV1_data:
       properties:
         accountIds:
@@ -497,14 +483,7 @@ components:
       required:
       - accountIds
       type: object
-    RequestAccountIdListV1:
-      properties:
-        data:
-          $ref: '#/components/schemas/RequestAccountIdListV1_data'
-        meta:
-          $ref: '#/components/schemas/Meta'
-      required:
-      - data
+    Meta:
       type: object
     ErrorV2_meta:
       description: Additional data for customised error codes.
@@ -515,6 +494,29 @@ components:
       type: object
       x-conditional:
       - urn
+    RequestAccountIdListV1:
+      properties:
+        data:
+          $ref: '#/components/schemas/RequestAccountIdListV1_data'
+        meta:
+          $ref: '#/components/schemas/Meta'
+      required:
+      - data
+      type: object
+    MetaPaginated:
+      properties:
+        totalRecords:
+          description: The total number of records in the full set. See [pagination](#pagination).
+          type: integer
+          x-cds-type: NaturalNumber
+        totalPages:
+          description: The total number of pages in the full set. See [pagination](#pagination).
+          type: integer
+          x-cds-type: NaturalNumber
+      required:
+      - totalPages
+      - totalRecords
+      type: object
     LinksPaginated:
       properties:
         self:
@@ -545,6 +547,40 @@ components:
       - next
       - first
       - last
+    BankingProductCategoryV2:
+      description: The category to which a product or account belongs. See [here](#product-categories) for more details.
+      enum:
+      - BUSINESS_LOANS
+      - BUY_NOW_PAY_LATER
+      - CRED_AND_CHRG_CARDS
+      - LEASES
+      - MARGIN_LOANS
+      - OVERDRAFTS
+      - PERS_LOANS
+      - REGULATED_TRUST_ACCOUNTS
+      - RESIDENTIAL_MORTGAGES
+      - TERM_DEPOSITS
+      - TRADE_FINANCE
+      - TRANS_AND_SAVINGS_ACCOUNTS
+      - TRAVEL_CARDS
+      type: string
+    BankingAccountId:
+      description: A unique identifier for a Banking account, generated according to [CDR ID Permanence](#id-permanence) requirements.
+      type: string
+      x-cds-type: ASCIIString
+    ResponseBankingDirectDebitAuthorisationList:
+      properties:
+        data:
+          $ref: '#/components/schemas/ResponseBankingDirectDebitAuthorisationList_data'
+        links:
+          $ref: '#/components/schemas/LinksPaginated'
+        meta:
+          $ref: '#/components/schemas/MetaPaginated'
+      required:
+      - data
+      - links
+      - meta
+      type: object
     ResponseErrorListV2:
       properties:
         errors:
@@ -554,20 +590,6 @@ components:
           type: array
       required:
       - errors
-      type: object
-    MetaPaginated:
-      properties:
-        totalRecords:
-          description: The total number of records in the full set. See [pagination](#pagination).
-          type: integer
-          x-cds-type: NaturalNumber
-        totalPages:
-          description: The total number of pages in the full set. See [pagination](#pagination).
-          type: integer
-          x-cds-type: NaturalNumber
-      required:
-      - totalPages
-      - totalRecords
       type: object
     ErrorV2:
       properties:
@@ -599,28 +621,6 @@ components:
       required:
       - directDebitAuthorisations
       type: object
-    Meta:
-      type: object
-    BankingAuthorisedEntity:
-      properties:
-        description:
-          description: Description of the authorised entity derived from previously executed direct debits.
-          type: string
-        financialInstitution:
-          description: Name of the financial institution through which the direct debit will be executed. Is required unless the payment is made via a credit card scheme.
-          type: string
-        abn:
-          description: Australian Business Number for the authorised entity.
-          type: string
-        acn:
-          description: Australian Company Number for the authorised entity.
-          type: string
-        arbn:
-          description: Australian Registered Body Number for the authorised entity.
-          type: string
-      type: object
-      x-conditional:
-      - financialInstitution
   headers:
     XV:
       description: The [payload version](#response-headers) that the endpoint has responded with.
