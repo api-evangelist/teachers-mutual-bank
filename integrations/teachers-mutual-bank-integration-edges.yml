@@ -1,5 +1,5 @@
 generated: '2026-10-12'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/teachers-mutual-bank/integrations
 - https://n8n.io/integrations/teachers-mutual-bank/
@@ -10,7 +10,125 @@ checked:
 - https://monid.ai/tools/teachers-mutual-bank
 - https://n8n.io/integrations/teachers-mutual-bank/
 - https://zapier.com/apps/teachers-mutual-bank/integrations
+- https://data.gov.au/data/dataset/asic-afs-licensee
+- https://data.gov.au/data/dataset/asic-credit-licensee
+- https://www.apra.gov.au/register-of-authorised-deposit-taking-institutions
+- https://www.apra.gov.au/registers/list-registered-general-insurers
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: APRA authorised deposit-taking institutions
+  partner: null
+  partner_match: register
+  type: register
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.apra.gov.au/register-of-authorised-deposit-taking-institutions
+  category: Australian authorised deposit-taking institution (APRA)
+  contract_reference:
+    register: APRA authorised deposit-taking institutions
+    spec_file: null
+    standard: null
+    role: authorised-deposit-taking-institution
+    registrations:
+    - registered_name: Teachers Mutual Bank Limited (trading as Australian Mutual Bank, Firefighters Mutual Bank,
+        Health Professionals Bank, Teachers Mutual Bank and UniBank)
+      licences:
+      - Australian-owned authorised deposit-taking institutions
+      register_country: AU
+      matched_domain: tmbank.com.au
+      matched_by: domain
+      section: Australian-owned authorised deposit-taking institutions
+      identity: wikidata Q7691250 'Teachers Mutual Bank' P856 http://www.tmbank.com.au
+    signal_note: 'participation only: a regulator licence / authorisation listing; no API conformance is published
+      by this register'
+    detected_by: sweep-australia-afs-adi-registers.py
+    detected: '2026-10-22'
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+  detected_by: sweep-australia-afs-adi-registers.py
+  first_seen: '2026-10-22'
+- partner_name: ASIC Australian Financial Services licensees
+  partner: null
+  partner_match: register-name
+  type: register
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://data.gov.au/data/dataset/ab7eddce-84df-4098-bc8f-500d0d9776d1/resource/d98a113d-6b50-40e6-b65f-2612efc877f4/download/afs_lic_202610.csv
+  category: Australian financial services licence (ASIC)
+  contract_reference:
+    register: ASIC Australian Financial Services licensees
+    spec_file: null
+    standard: null
+    role: afs-licensee
+    registrations:
+    - registered_name: TEACHERS MUTUAL BANK LIMITED
+      licences:
+      - AFS licence
+      - deposit and payment products
+      - non-cash payment products
+      - general insurance products
+      - life products
+      - derivatives
+      - securities
+      register_country: AU
+      matched_domain: null
+      matched_by: register-name
+      register_id: AFSL 238981
+      abn_acn: '30087650459'
+      state: NSW
+      start: 14/02/2004
+      register_name_note: 'register-name ''teachersmutualbank'' = teachers-mutual-bank; no wikidata P856; AU presence:
+        Australia tag'
+    signal_note: 'participation only: a regulator licence / authorisation listing; no API conformance is published
+      by this register'
+    detected_by: sweep-australia-afs-adi-registers.py
+    detected: '2026-10-22'
+    matched_by: register-name
+    identity_source: register-name
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  detected_by: sweep-australia-afs-adi-registers.py
+  first_seen: '2026-10-22'
+- partner_name: ASIC Australian credit licensees
+  partner: null
+  partner_match: register-name
+  type: register
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://data.gov.au/data/dataset/fa0b0d71-b8b8-4af8-bc59-0b000ce0d5e4/resource/35953a01-a9a8-4609-8566-c9fa7de465d3/download/credit_lic_202610.csv
+  category: Australian credit licence (ASIC)
+  contract_reference:
+    register: ASIC Australian credit licensees
+    spec_file: null
+    standard: null
+    role: credit-licensee
+    registrations:
+    - registered_name: TEACHERS MUTUAL BANK LIMITED
+      licences:
+      - Australian credit licence
+      - credit provider
+      - lessor (consumer leases)
+      register_country: AU
+      matched_domain: null
+      matched_by: register-name
+      register_id: ACL 238981
+      abn_acn: '30087650459'
+      status: APPR
+      state: NSW
+      start: 01/02/2011
+      register_name_note: 'register-name ''teachersmutualbank'' = teachers-mutual-bank; no wikidata P856; AU presence:
+        Australia tag'
+    signal_note: 'participation only: a regulator licence / authorisation listing; no API conformance is published
+      by this register'
+    detected_by: sweep-australia-afs-adi-registers.py
+    detected: '2026-10-22'
+    matched_by: register-name
+    identity_source: register-name
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  detected_by: sweep-australia-afs-adi-registers.py
+  first_seen: '2026-10-22'
 templates: []
