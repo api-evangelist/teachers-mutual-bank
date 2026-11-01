@@ -1,4 +1,4 @@
-# Teachers Mutual Bank (teachers-mutual-bank)
+# Teachers Mutual Bank
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,63 +64,135 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Teachers Mutual Bank is an Australian customer-owned mutual bank and a brand of Teachers Mutual Bank Limited (TMBL), an authorised deposit-taking institution (ADI) regulated by APRA that also operates UniBank, Firefighters Mutual Bank, Health Professionals Bank and Hiver. As a member-owned bank it returns value to members rather than external shareholders. Under Australia's Consumer Data Right (CDR / Open Banking), it exposes a public, unauthenticated Product Reference Data (PRD) API conforming to the Data Standards Body (DSB) Consumer Data Standards.
+Teachers Mutual Bank is an Australian customer-owned mutual bank and a brand of Teachers Mutual Bank Limited (TMBL), an authorised deposit-taking institution (ADI) regulated by APRA that also operates UniBank, Firefighters Mutual Bank, Health Professionals Bank and Hiver. As a member-owned bank it returns value to members rather than external shareholders and serves teachers, education staff and the wider community. Under Australia's Consumer Data Right (CDR / Open Banking), Teachers Mutual Bank exposes a public, unauthenticated Product Reference Data (PRD) API conforming to the Data Standards Body (DSB) Consumer Data Standards, letting anyone retrieve its banking product catalogue. Consumer (account and transaction) data sharing is available to accredited data recipients through the authenticated CDR channel using the OAuth2 / OpenID Connect FAPI security profile.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/teachers-mutual-bank/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/teachers-mutual-bank/refs/heads/main/apis.yml)
+**Areas:** Finance · Banks · Open Banking · CDR · Consumer Banking · Australia · Mutual Bank · Product Reference Data
 
-## Tags
+## Teachers Mutual Bank on APIs.io
 
-- Financial
-- Banks
-- Open Banking
-- CDR
-- Consumer Banking
-- Australia
-- Mutual Bank
-- Product Reference Data
+Everything profiled for Teachers Mutual Bank is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/teachers-mutual-bank/](https://apis.io/providers/teachers-mutual-bank/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (7)
 
-- **Created:** 2026-07-20
-- **Modified:** 2026-07-20
+- [Teachers Mutual Bank Banking Account Balances API](https://apis.io/apis/teachers-mutual-bank/teachers-mutual-bank-banking-account-balances-api/) — Banking Account Balance endpoints
+- [Teachers Mutual Bank Banking Account Direct Debits API](https://apis.io/apis/teachers-mutual-bank/teachers-mutual-bank-banking-account-direct-debits-api/) — Banking Account Direct Debit endpoints
+- [Teachers Mutual Bank Banking Account Scheduled Payments API](https://apis.io/apis/teachers-mutual-bank/teachers-mutual-bank-banking-account-scheduled-payments-api/) — Banking Account Scheduled Payment endpoints
+- [Teachers Mutual Bank Banking Account Transactions API](https://apis.io/apis/teachers-mutual-bank/teachers-mutual-bank-banking-account-transactions-api/) — Banking Account Transaction endpoints
+- [Teachers Mutual Bank Banking Accounts API](https://apis.io/apis/teachers-mutual-bank/teachers-mutual-bank-banking-accounts-api/) — Banking Account endpoints
+- [Teachers Mutual Bank Banking Payees API](https://apis.io/apis/teachers-mutual-bank/teachers-mutual-bank-banking-payees-api/) — Banking Payee endpoints
+- [Teachers Mutual Bank Banking Products API](https://apis.io/apis/teachers-mutual-bank/teachers-mutual-bank-banking-products-api/) — Banking Product endpoints
 
-## APIs
+### Published properties
 
-### Teachers Mutual Bank CDR Product Reference Data API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Public, unauthenticated Consumer Data Right Product Reference Data (PRD) API for the Teachers Mutual Bank brand of Teachers Mutual Bank Limited. Exposes `GET /banking/products` and `GET /banking/products/{productId}` under the standard CDS base path, returning the bank's full banking product catalogue (30 products at time of review) as defined by the DSB Consumer Data Standards. Confirmed live (HTTP 200) with the `x-v` header set to `4` (server advertises versions 4 and 5).
+#### MCP servers (1)
 
-- **Human URL:** [https://www.tmbank.com.au/open-banking](https://www.tmbank.com.au/open-banking)
-- **Base URL:** `https://ob.tmbl.com.au/tmbank/cds-au/v1`
+Model Context Protocol servers that expose the API to agents.
 
-#### Tags
+- [teachers-mutual-bank](https://apis.io/servers/teachers-mutual-bank/teachers-mutual-bank/)
 
-- CDR
-- Open Banking
-- Product Reference Data
-- Banking
-- Consumer Data Right
+#### Collections (7)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://www.tmbank.com.au/open-banking)
-- [API Reference](https://consumerdatastandardsaustralia.github.io/standards/#banking-apis)
-- [OpenAPI](openapi/teachers-mutual-bank-cds-banking-products-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [CDR Banking Banking Account Balances API](https://apis.io/collections/teachers-mutual-bank/open-teachers-mutual-bank-banking-account-balances-api/)
+- [CDR Banking Banking Account Balances Banking Account Direct Debits API](https://apis.io/collections/teachers-mutual-bank/open-teachers-mutual-bank-banking-account-direct-debits-api/)
+- [CDR Banking Banking Account Balances Banking Account Scheduled Payments API](https://apis.io/collections/teachers-mutual-bank/open-teachers-mutual-bank-banking-account-scheduled-payments-api/)
+- [CDR Banking Banking Account Balances Banking Account Transactions API](https://apis.io/collections/teachers-mutual-bank/open-teachers-mutual-bank-banking-account-transactions-api/)
+- [CDR Banking Banking Account Balances Banking Accounts API](https://apis.io/collections/teachers-mutual-bank/open-teachers-mutual-bank-banking-accounts-api/)
+- [CDR Banking Banking Account Balances Banking Payees API](https://apis.io/collections/teachers-mutual-bank/open-teachers-mutual-bank-banking-payees-api/)
+- [CDR Banking Banking Account Balances Banking Products API](https://apis.io/collections/teachers-mutual-bank/open-teachers-mutual-bank-banking-products-api/)
 
-> **Spec provenance:** The harvested OpenAPI is the shared DSB Consumer Data Standards "CDR Banking API" swagger (OpenAPI 3.0.3, version 1.36.0), captured verbatim from the Data Standards Body. It is the standard that governs the PRD endpoints — not a Teachers Mutual Bank proprietary contract. The bank publishes no own OpenAPI.
+#### Overlays (1)
 
-## Common Properties
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Teachers Mutual Bank Cds Banking Products Overlay](https://apis.io/overlays/teachers-mutual-bank/teachers-mutual-bank-cds-banking-products-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Teachers Mutual Bank Authentication](https://apis.io/security/teachers-mutual-bank/teachers-mutual-bank-authentication/)
+- [Teachers Mutual Bank Domain Security](https://apis.io/security/teachers-mutual-bank/teachers-mutual-bank-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Teachers Mutual Bank Scopes](https://apis.io/scopes/teachers-mutual-bank/teachers-mutual-bank-scopes/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Teachers Mutual Bank Rate Limits](https://apis.io/rate-limits/teachers-mutual-bank/teachers-mutual-bank-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.tmbank.com.au/)
-- [Developer Portal](https://www.tmbank.com.au/open-banking)
 - [Documentation](https://www.tmbank.com.au/open-banking)
-- [LinkedIn](https://www.linkedin.com/company/teachers-mutual-bank)
-- [Privacy Policy](https://www.tmbank.com.au/privacy)
-- [Security](https://www.tmbank.com.au/security)
+- [Getting started](https://www.tmbank.com.au/open-banking)
+- [API reference](https://consumerdatastandardsaustralia.github.io/standards/#banking-apis)
 - [Support](https://www.tmbank.com.au/contact)
-- [Parent Organization](https://www.tmbl.com.au/)
+- [Security](https://www.tmbank.com.au/security)
+- [Terms of service](https://www.tmbank.com.au/important-information)
+- [Privacy policy](https://www.tmbank.com.au/privacy)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 40.9** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 44.7 |
+| Contract governance | 4.5 |
+| Operational transparency | 39.5 |
+| Developer ergonomics | 56.5 |
+| Access clarity | 21.1 |
+
+**Agent readiness 26.2** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 33.1** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/teachers-mutual-bank/](https://apis.io/providers/teachers-mutual-bank/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Teachers Mutual Bank: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/teachers-mutual-bank/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
